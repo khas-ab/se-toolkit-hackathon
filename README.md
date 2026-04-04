@@ -1,6 +1,5 @@
 ### Implementation plan
 A recipe manager that suggests meals based on your dietary goals, available ingredients, and nutrition targets.
-
      - Backend: FastAPI + PostgreSQL. Recipes (ingredients, steps, macros, tags like vegan/high-protein), meal plans, user preferences,
        shopping lists.
      - Web: Recipe browser with filters (calories, cuisine, prep time), weekly meal plan calendar, nutrition breakdown charts, auto-generated
