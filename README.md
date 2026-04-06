@@ -1,6 +1,6 @@
 # Diet Recipe Planner
 
-A full-stack recipe planning application with two interfaces: a traditional recipe browser/planner and an AI-powered chat agent. Built with FastAPI, PostgreSQL, React, and LLM function calling.
+A recipe manager that suggests meals based on your dietary goals, available ingredients, and nutrition targets.
 
 ## Demo
 
