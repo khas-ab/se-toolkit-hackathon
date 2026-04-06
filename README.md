@@ -8,13 +8,16 @@ A full-stack recipe planning application with two interfaces: a traditional reci
 
 Traditional UI with ingredient filters, recipe cards, weekly calendar, and nutrition charts.
 
-![Recipe Browser](diet-recipe-planner/docs/screenshot-recipe-browser.png)
+<img width="2864" height="1663" alt="image" src="https://github.com/user-attachments/assets/37fd497f-49a1-4942-851f-13555761703b" />
+
+<img width="2808" height="1625" alt="image" src="https://github.com/user-attachments/assets/6029e616-70d1-4dea-92ae-15f825d6e99f" />
+
 
 ### Tab 2 — AI Agent Chat
 
 Natural language queries with inline recipe cards and structured data rendering.
 
-![AI Agent Chat](diet-recipe-planner/docs/screenshot-agent-chat.png)
+<img width="2847" height="1620" alt="image" src="https://github.com/user-attachments/assets/85974945-cdae-4aa5-8bb2-04ae145ef3ff" />
 
 ## Product Context
 
