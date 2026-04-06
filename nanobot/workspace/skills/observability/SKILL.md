@@ -47,6 +47,7 @@ You have access to observability tools that query VictoriaLogs and VictoriaTrace
 
 **User:** "What went wrong?" or "Check system health"
 **You:** Run a multi-step investigation **in a single response**:
+
 1. Call `logs_search` with `query="level:error"` and `limit=10` to find recent errors
 2. Extract the `trace_id` from the most recent error log
 3. Call `traces_get` with that trace_id to see the full failure context
