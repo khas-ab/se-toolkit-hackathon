@@ -5,6 +5,7 @@ A full-stack recipe planning application with **two interfaces**: a traditional 
 ## Features
 
 ### Tab 1 — Recipe Browser & Planner
+
 - **Ingredient pantry** — Add/remove ingredients you have on hand
 - **Recipe browser** — Filter by calories, prep time, diet type, and search
 - **Smart suggestions** — Get recipe recommendations based on your available ingredients
@@ -13,6 +14,7 @@ A full-stack recipe planning application with **two interfaces**: a traditional 
 - **Shopping list** — Auto-generated from meal plan, with quantity aggregation and categorization
 
 ### Tab 2 — AI Agent Chat
+
 - **Natural language queries** — "What can I cook with chicken and rice?"
 - **LLM function calling** — The agent uses tools (not regex) to search, plan, and manage
 - **Inline recipe cards** — Structured data rendered in the chat
@@ -20,12 +22,14 @@ A full-stack recipe planning application with **two interfaces**: a traditional 
 - **Cross-tab sync** — Actions in chat update the planner and vice versa
 
 ### Telegram Bot (Bonus)
+
 - `/add` — Add ingredients to your pantry
 - `/suggest` — Get top 3 recipe suggestions
 - `/plan week` — Generate a 7-day meal plan
 - `/shopping` — Get your grocery list as a formatted message
 
 ### Background Jobs (APScheduler)
+
 - **Daily dinner reminder** (8 AM) — Telegram message with today's dinner recipe
 - **Weekly shopping list** (Sunday 9 AM) — Auto-generated and sent via Telegram
 
@@ -34,6 +38,7 @@ A full-stack recipe planning application with **two interfaces**: a traditional 
 ## Quick Start
 
 ### Prerequisites
+
 - Docker & Docker Compose
 - Node.js 18+ (for local frontend dev)
 - Python 3.11+ (for local backend dev)
@@ -52,10 +57,11 @@ cp .env.example .env
 ### 2. Start everything
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This starts:
+
 - **PostgreSQL** on port 5432
 - **FastAPI backend** on port 8000 (with hot reload)
 - **React frontend** on port 5173 (Vite dev server)
@@ -63,12 +69,12 @@ This starts:
 ### 3. Seed the database
 
 ```bash
-docker-compose exec backend python seed_recipes.py
+docker compose exec backend python seed_recipes.py
 ```
 
 ### 4. Open the app
 
-Navigate to **http://localhost:5173** in your browser.
+Navigate to <http://localhost:5173> in your browser.
 
 ---
 
@@ -116,7 +122,7 @@ diet-recipe-planner/
 ## API Endpoints
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
+| ------ | -------- | ----------- |
 | GET | `/api/recipes` | List recipes with filters |
 | POST | `/api/recipes` | Create a recipe |
 | GET | `/api/recipes/{id}` | Get a single recipe |
@@ -142,7 +148,7 @@ diet-recipe-planner/
 | PUT | `/api/preferences` | Update preferences |
 | POST | `/api/agent/query` | AI agent natural language query |
 
-Full Swagger docs available at **http://localhost:8000/docs**
+Full Swagger docs available at <http://localhost:8000/docs>
 
 ---
 
@@ -151,7 +157,7 @@ Full Swagger docs available at **http://localhost:8000/docs**
 The agent uses **LLM function calling** (not regex or keyword matching) to interpret queries. Here are tested examples:
 
 | User Query | Tool Called | Action |
-|---|---|---|
+| ---------- | ----------- | ------ |
 | "I have chicken, broccoli, rice" | `search_recipes` | Finds recipes matching ≥2 ingredients |
 | "High-protein dinner under 500 cal" | `search_recipes` | Filters by calories + tags |
 | "Plan my week for keto" | `generate_meal_plan` | Creates 7-day plan with keto filter |
@@ -165,7 +171,7 @@ The agent uses **LLM function calling** (not regex or keyword matching) to inter
 ## Environment Variables
 
 | Variable | Default | Description |
-|---|---|---|
+| -------- | ------- | ----------- |
 | `DATABASE_URL` | `postgresql://recipeuser:recipepass@db:5432/recipe_db` | PostgreSQL connection |
 | `OPENAI_API_KEY` | — | OpenAI API key (for GPT) |
 | `QWEN_API_KEY` | — | Qwen/DashScope API key |
@@ -215,6 +221,7 @@ python seed_recipes.py
 ## Screenshots
 
 ### Tab 1: Recipe Browser & Planner
+
 - Ingredient panel with add/remove
 - Filter controls (calories, prep time, diet type)
 - Recipe cards with macros and tags
@@ -223,6 +230,7 @@ python seed_recipes.py
 - Shopping list modal with categories
 
 ### Tab 2: AI Agent Chat
+
 - ChatGPT-like message bubbles
 - Suggested prompt buttons
 - Inline recipe cards in responses

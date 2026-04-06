@@ -7,7 +7,7 @@ This document contains `curl` commands to test every API endpoint.
 ```bash
 # Start the backend (via docker-compose or locally)
 cd diet-recipe-planner
-docker-compose up -d backend
+docker compose up -d backend
 
 # Or run locally:
 cd backend
@@ -32,31 +32,37 @@ Expected: `{"status": "ok", "version": "1.0.0", ...}`
 ## 2. Recipes
 
 ### List all recipes
+
 ```bash
 curl -s http://localhost:8000/api/recipes | python -m json.tool | head -30
 ```
 
 ### Filter by max calories
+
 ```bash
 curl -s "http://localhost:8000/api/recipes?max_calories=300" | python -m json.tool
 ```
 
 ### Filter by diet type (keto)
+
 ```bash
 curl -s "http://localhost:8000/api/recipes?diet_type=keto" | python -m json.tool
 ```
 
 ### Search by name
+
 ```bash
 curl -s "http://localhost:8000/api/recipes?search=chicken" | python -m json.tool
 ```
 
 ### Get a single recipe
+
 ```bash
 curl -s http://localhost:8000/api/recipes/1 | python -m json.tool
 ```
 
 ### Create a recipe
+
 ```bash
 curl -s -X POST http://localhost:8000/api/recipes \
   -H "Content-Type: application/json" \
@@ -76,6 +82,7 @@ curl -s -X POST http://localhost:8000/api/recipes \
 ```
 
 ### Update a recipe
+
 ```bash
 curl -s -X PUT http://localhost:8000/api/recipes/1 \
   -H "Content-Type: application/json" \
@@ -83,6 +90,7 @@ curl -s -X PUT http://localhost:8000/api/recipes/1 \
 ```
 
 ### Delete a recipe
+
 ```bash
 curl -s -X DELETE http://localhost:8000/api/recipes/1 -w "\nHTTP Status: %{http_code}\n"
 ```
@@ -92,6 +100,7 @@ curl -s -X DELETE http://localhost:8000/api/recipes/1 -w "\nHTTP Status: %{http_
 ## 3. Suggest Recipes
 
 ### Suggest by ingredients
+
 ```bash
 curl -s -X POST http://localhost:8000/api/suggest \
   -H "Content-Type: application/json" \
@@ -103,6 +112,7 @@ curl -s -X POST http://localhost:8000/api/suggest \
 ```
 
 ### Suggest with diet filter
+
 ```bash
 curl -s -X POST http://localhost:8000/api/suggest \
   -H "Content-Type: application/json" \
@@ -118,11 +128,13 @@ curl -s -X POST http://localhost:8000/api/suggest \
 ## 4. User Ingredients
 
 ### List ingredients
+
 ```bash
 curl -s http://localhost:8000/api/ingredients | python -m json.tool
 ```
 
 ### Add an ingredient
+
 ```bash
 curl -s -X POST http://localhost:8000/api/ingredients \
   -H "Content-Type: application/json" \
@@ -130,6 +142,7 @@ curl -s -X POST http://localhost:8000/api/ingredients \
 ```
 
 ### Add multiple ingredients
+
 ```bash
 curl -s -X POST http://localhost:8000/api/ingredients \
   -H "Content-Type: application/json" \
@@ -141,6 +154,7 @@ curl -s -X POST http://localhost:8000/api/ingredients \
 ```
 
 ### Remove an ingredient
+
 ```bash
 curl -s -X DELETE http://localhost:8000/api/ingredients/1 -w "\nHTTP Status: %{http_code}\n"
 ```
@@ -150,11 +164,13 @@ curl -s -X DELETE http://localhost:8000/api/ingredients/1 -w "\nHTTP Status: %{h
 ## 5. Meal Plans
 
 ### List meal plans
+
 ```bash
 curl -s http://localhost:8000/api/meal-plans | python -m json.tool
 ```
 
 ### Create a meal plan
+
 ```bash
 curl -s -X POST http://localhost:8000/api/meal-plans \
   -H "Content-Type: application/json" \
@@ -162,29 +178,34 @@ curl -s -X POST http://localhost:8000/api/meal-plans \
 ```
 
 ### Get a meal plan with entries
+
 ```bash
 curl -s http://localhost:8000/api/meal-plans/1 | python -m json.tool
 ```
 
 ### Add a recipe to a meal plan slot
+
 ```bash
 curl -s -X POST "http://localhost:8000/api/meal-plans/1/entries?recipe_id=1&day=monday&meal_type=dinner" \
   -w "\nHTTP Status: %{http_code}\n"
 ```
 
 ### Remove a meal plan entry
+
 ```bash
 # First get the entry ID from the meal plan response, then:
 curl -s -X DELETE http://localhost:8000/api/meal-plans/entries/1 -w "\nHTTP Status: %{http_code}\n"
 ```
 
 ### Auto-generate a weekly plan
+
 ```bash
 curl -s -X POST "http://localhost:8000/api/meal-plans/generate?plan_name=Auto+Plan" \
   | python -m json.tool
 ```
 
 ### Get weekly nutrition
+
 ```bash
 curl -s http://localhost:8000/api/meal-plans/1/nutrition | python -m json.tool
 ```
@@ -194,11 +215,13 @@ curl -s http://localhost:8000/api/meal-plans/1/nutrition | python -m json.tool
 ## 6. Shopping List
 
 ### Get shopping list
+
 ```bash
 curl -s http://localhost:8000/api/shopping-list | python -m json.tool
 ```
 
 ### Add an item
+
 ```bash
 curl -s -X POST http://localhost:8000/api/shopping-list \
   -H "Content-Type: application/json" \
@@ -206,6 +229,7 @@ curl -s -X POST http://localhost:8000/api/shopping-list \
 ```
 
 ### Update an item (mark as purchased)
+
 ```bash
 curl -s -X PUT http://localhost:8000/api/shopping-list/1 \
   -H "Content-Type: application/json" \
@@ -213,11 +237,13 @@ curl -s -X PUT http://localhost:8000/api/shopping-list/1 \
 ```
 
 ### Delete an item
+
 ```bash
 curl -s -X DELETE http://localhost:8000/api/shopping-list/1 -w "\nHTTP Status: %{http_code}\n"
 ```
 
 ### Generate from meal plan
+
 ```bash
 curl -s -X POST http://localhost:8000/api/shopping-list/generate/1 | python -m json.tool
 ```
@@ -227,11 +253,13 @@ curl -s -X POST http://localhost:8000/api/shopping-list/generate/1 | python -m j
 ## 7. User Preferences
 
 ### Get preferences
+
 ```bash
 curl -s http://localhost:8000/api/preferences | python -m json.tool
 ```
 
 ### Update preferences
+
 ```bash
 curl -s -X PUT http://localhost:8000/api/preferences \
   -H "Content-Type: application/json" \
@@ -248,9 +276,10 @@ curl -s -X PUT http://localhost:8000/api/preferences \
 
 ## 8. AI Agent (LLM Function Calling)
 
-> **Note:** Requires `OPENAI_API_KEY` or `QWEN_API_KEY` to be set.
+> **Note:** Requires `OPENAI_API_KEY` or `QWEN_API_KEY` to be set. Without a key, the agent uses local intent detection.
 
 ### Test query: ingredient-based search
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -259,6 +288,7 @@ curl -s -X POST http://localhost:8000/api/agent/query \
 ```
 
 ### Test query: calorie-filtered search
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -267,6 +297,7 @@ curl -s -X POST http://localhost:8000/api/agent/query \
 ```
 
 ### Test query: meal plan generation
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -275,6 +306,7 @@ curl -s -X POST http://localhost:8000/api/agent/query \
 ```
 
 ### Test query: substitution
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -283,6 +315,7 @@ curl -s -X POST http://localhost:8000/api/agent/query \
 ```
 
 ### Test query: add to shopping list
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -291,6 +324,7 @@ curl -s -X POST http://localhost:8000/api/agent/query \
 ```
 
 ### Test query: query meal plan
+
 ```bash
 curl -s -X POST http://localhost:8000/api/agent/query \
   -H "Content-Type: application/json" \
@@ -320,6 +354,7 @@ python telegram_bot.py
 ```
 
 Then in Telegram, send:
+
 - `/start` — Welcome message
 - `/add chicken, rice, broccoli` — Add ingredients
 - `/suggest` — Get recipe suggestions
