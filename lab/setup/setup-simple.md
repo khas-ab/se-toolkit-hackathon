@@ -87,45 +87,48 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
    > **If you use a plain SSH terminal** — pick one of these:
    >
    > **Option A — SSH key** (recommended, one-time setup):
+   >
    > 1. On the VM, generate a key (skip if `~/.ssh/id_ed25519.pub` already exists):
->    ```
-
->    ssh-keygen -t ed25519 -C "<your-email@example.com>"
->    ```
-
->    Press Enter three times to accept defaults (no passphrase is fine).
+   >
+   >    ```
+   >    ssh-keygen -t ed25519 -C "<your-email@example.com>"
+   >    ```
+   >
+   >    Press Enter three times to accept defaults (no passphrase is fine).
+   >
    > 2. Print the public key:
->    ```
-
->    cat ~/.ssh/id_ed25519.pub
->    ```
-
+   >
+   >    ```
+   >    cat ~/.ssh/id_ed25519.pub
+   >    ```
+   >
    > 3. Copy the output. In your browser, go to <https://github.com/settings/keys> → **New SSH key** → paste → **Add SSH key**.
+   >
    > 4. Clone with the SSH URL instead of HTTPS:
->    ```
-
->    git clone --recurse-submodules <git@github.com:YOUR_GITHUB_USERNAME>/se-toolkit-lab-8.git
->    ```
-
->    Or, if you already cloned via HTTPS, switch the remote:
->    ```
-
->    git remote set-url origin <git@github.com:YOUR_GITHUB_USERNAME>/se-toolkit-lab-8.git
->    ```
-
+   >
+   >    ```
+   >    git clone --recurse-submodules git@github.com:YOUR_GITHUB_USERNAME/se-toolkit-lab-8.git
+   >    ```
+   >
+   >    Or, if you already cloned via HTTPS, switch the remote:
+   >
+   >    ```
+   >    git remote set-url origin git@github.com:YOUR_GITHUB_USERNAME/se-toolkit-lab-8.git
+   >    ```
    >
    > **Option B — Personal access token** (quick, less secure):
+   >
    > 1. In your browser, go to <https://github.com/settings/tokens> → **Generate new token (classic)** → select **`repo`** scope → **Generate token**.
+   >
    > 2. Copy the token. On the VM, run:
->    ```
-
->    git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_GITHUB_USERNAME/se-toolkit-lab-8.git
->    ```
-
+   >
+   >    ```
+   >    git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_GITHUB_USERNAME/se-toolkit-lab-8.git
+   >    ```
    >
    > **Verify** — after either option, run: `git push origin main`. It should succeed with no password prompt.
 
-3. Go into the repository and install `Python` dependencies:
+1. Go into the repository and install `Python` dependencies:
 
    ```terminal
    cd se-toolkit-lab-8
@@ -134,13 +137,13 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
 
    You will add `nanobot-ai` later in Task 1 inside a repo-local `nanobot/` project.
 
-4. Create the environment file:
+2. Create the environment file:
 
    ```terminal
    cp .env.docker.example .env.docker.secret
    ```
 
-5. Configure the autochecker API credentials.
+3. Configure the autochecker API credentials.
 
    The ETL pipeline fetches data from the autochecker dashboard API.
    Open `.env.docker.secret` and set:
@@ -158,13 +161,13 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
    > If you haven't registered in the autochecker bot yet, do it now at <https://t.me/auchebot>.
    > If you need to change existing data, ask your TA or try `/reset` in the bot.
 
-6. Set `LMS_API_KEY` — this is the **backend API key** that protects your LMS endpoints (used for `Authorization: Bearer` in Swagger and the React dashboard). It is **not** the Nanobot login password and it is **not** the LLM key.
+4. Set `LMS_API_KEY` — this is the **backend API key** that protects your LMS endpoints (used for `Authorization: Bearer` in Swagger and the React dashboard). It is **not** the Nanobot login password and it is **not** the LLM key.
 
    ```text
    LMS_API_KEY=set-it-to-something-and-remember-it
    ```
 
-7. Set `QWEN_CODE_API_KEY` — the Qwen Code API is included as a Docker Compose service. You just need to set your API key:
+5. Set `QWEN_CODE_API_KEY` — the Qwen Code API is included as a Docker Compose service. You just need to set your API key:
 
    ```text
    QWEN_CODE_API_KEY=your-qwen-api-key
@@ -172,7 +175,7 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
 
    If you don't have a Qwen API key yet, see [step 1.9](#19-set-up-llm-access-qwen-code-api).
 
-8. Set `NANOBOT_ACCESS_KEY` — this is the password that will protect the Nanobot web client in Task 2. There is **no default**. Choose your own value and remember it.
+6. Set `NANOBOT_ACCESS_KEY` — this is the password that will protect the Nanobot web client in Task 2. There is **no default**. Choose your own value and remember it.
 
    ```text
    NANOBOT_ACCESS_KEY=set-your-own-private-password

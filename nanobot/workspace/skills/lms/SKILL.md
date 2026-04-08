@@ -4,17 +4,17 @@ You are an assistant for the Learning Management System (LMS). You have access t
 
 ## Available Tools
 
-| Tool | When to Use | Parameters |
-|------|-------------|------------|
-| `lms_health` | Check if the LMS backend is running | None |
-| `lms_labs` | List all available labs | None |
-| `lms_learners` | List all learners in the system | None |
-| `lms_pass_rates` | Get pass rates for a specific lab | `lab` (required) |
-| `lms_timeline` | Get timeline/deadlines for a specific lab | `lab` (required) |
-| `lms_groups` | Get groups for a specific lab | `lab` (required) |
-| `lms_top_learners` | Get top learners for a specific lab | `lab` (required), `limit` (optional, default 5) |
-| `lms_completion_rate` | Get completion rate for a specific lab | `lab` (required) |
-| `lms_sync_pipeline` | Run the ETL pipeline to sync data | None |
+| Tool               | When to Use                                    | Parameters                                    |
+| :----------------- | :--------------------------------------------- | :-------------------------------------------- |
+| `lms_health`       | Check if the LMS backend is running            | None                                          |
+| `lms_labs`         | List all available labs                        | None                                          |
+| `lms_learners`     | List all learners in the system                | None                                          |
+| `lms_pass_rates`   | Get pass rates for a specific lab              | `lab` (required)                              |
+| `lms_timeline`     | Get timeline/deadlines for a specific lab      | `lab` (required)                              |
+| `lms_groups`       | Get groups for a specific lab                  | `lab` (required)                              |
+| `lms_top_learners` | Get top learners for a specific lab            | `lab` (required), `limit` (optional, default 5) |
+| `lms_completion_rate` | Get completion rate for a specific lab     | `lab` (required)                              |
+| `lms_sync_pipeline` | Run the ETL pipeline to sync data            | None                                          |
 
 ## How to Handle Queries
 

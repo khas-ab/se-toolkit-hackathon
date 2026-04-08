@@ -12,7 +12,6 @@ Traditional UI with ingredient filters, recipe cards, weekly calendar, and nutri
 
 <img width="2808" height="1625" alt="image" src="https://github.com/user-attachments/assets/6029e616-70d1-4dea-92ae-15f825d6e99f" />
 
-
 ### Tab 2 — AI Agent Chat
 
 Natural language queries with inline recipe cards and structured data rendering.
@@ -30,6 +29,7 @@ Natural language queries with inline recipe cards and structured data rendering.
 ### Problem
 
 Planning meals is tedious. You need to:
+
 1. Check what ingredients you have at home
 2. Find recipes that match those ingredients
 3. Fit recipes into a weekly schedule
@@ -95,22 +95,26 @@ docker compose up -d
 docker compose exec backend python seed_recipes.py
 ```
 
-Open **http://localhost:5173** in your browser.
+Open **[http://localhost:5173](http://localhost:5173)** in your browser.
 
 ### Telegram Bot (does not really work)
 
 1. Get a bot token from **@BotFather** on Telegram
 2. Get your chat ID from **@userinfobot**
 3. Add both to `.env`:
+
    ```
    TELEGRAM_BOT_TOKEN=your-token-here
    TELEGRAM_CHAT_ID=your-chat-id-here
    ```
+
 4. Restart the backend and start the bot:
+
    ```bash
    docker compose restart backend
    docker compose exec backend python telegram_bot.py
    ```
+
 5. In Telegram, send:
    - `/start` — Welcome message
    - `/add chicken, rice, broccoli` — Add ingredients
@@ -120,7 +124,7 @@ Open **http://localhost:5173** in your browser.
 
 ### API Documentation
 
-Swagger UI: **http://localhost:8000/docs**
+Swagger UI: **[http://localhost:8000/docs](http://localhost:8000/docs)**
 
 Full curl test commands: see [TESTING.md](diet-recipe-planner/TESTING.md)
 

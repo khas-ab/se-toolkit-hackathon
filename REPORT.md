@@ -198,9 +198,9 @@ Spans: 5
 
 <!-- Paste proactive health report transcript here -->
 
-6. Ask the agent to remove the test job
+1. Ask the agent to remove the test job
 
-7. Restart PostgreSQL:
+2. Restart PostgreSQL:
 
    ```bash
    docker compose --env-file .env.docker.secret start postgres
