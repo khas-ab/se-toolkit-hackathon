@@ -158,7 +158,7 @@ docker compose version
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/khas-ab/se-toolkit-lab-9.git
+   git clone https://github.com/khas-ab/se-toolkit-hackathon.git
    cd se-toolkit-lab-9/diet-recipe-planner
    ```
 
